@@ -33,6 +33,8 @@ void Leaderboard::loadFromFile(const string& filename){
     string line;
     getline(fid,line);
     while (getline(fid,line)){
+        if (!line.empty() && line.back() == '\r') line.pop_back();//handle windows line endings
+        if (line.empty()) continue;//skip blank lines
         stringstream ss(line);
         string comma_finder;
         
